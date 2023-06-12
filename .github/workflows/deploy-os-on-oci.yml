@@ -53,7 +53,7 @@ jobs:
         path: public
 
     - name: Upload Static Website
-      uses: oracle-actions/run-oci-cli-command@v1.1.1
+      uses: oracle-actions/run-oci-cli-command@v1.1
       env:
         OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
         OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
