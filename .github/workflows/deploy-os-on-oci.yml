@@ -31,7 +31,7 @@ jobs:
 
     - name: Upload build result
       # No need to upload if we won't deploy.
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       uses: actions/upload-artifact@v2
       with:
         name: build-output
@@ -44,7 +44,7 @@ jobs:
 
     # References to the env context aren't supported here, so copy-paste from
     # the upload step.
-    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
     - name: Download build result
       uses: actions/download-artifact@v2
