@@ -66,5 +66,5 @@ jobs:
     - name: Upload Static Website
       uses: oracle-actions/run-oci-cli-command@v1.1.1
       with:
-        command: '--debug os object put -bn website --file index.html --content-type text/html --force'
+        command: '--debug os object put --namespace ${{ secrets.OCI_CLI_NAMESPACE }} -bn website --file index.html --content-type text/html --force'
         silent: false
