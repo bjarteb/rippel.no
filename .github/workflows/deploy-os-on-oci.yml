@@ -52,6 +52,11 @@ jobs:
         name: build-output
         path: public
 
+    - name: Generate HTML
+      run: |
+        echo '<html>hello</html>' > index.html
+        cat index.html
+
     - name: Upload Static Website
       uses: oracle-actions/run-oci-cli-command@v1.1
       env:
@@ -61,4 +66,4 @@ jobs:
         OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
         OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
       with:
-        command: os object sync -bn website --src-dir public
+        command: os object put -bn website --file index.html --content-type text/html --force
