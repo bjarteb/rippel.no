@@ -68,4 +68,4 @@ jobs:
       with:
         command: '--debug os object sync -bn website --src-dir public'
           #command: '--debug os object put --namespace ${{ secrets.OCI_CLI_NAMESPACE }} -bn website --file index.html --content-type text/html --force'
-        silent: false
+        silent: true
