@@ -13,29 +13,29 @@ on:
 
 jobs:
 
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repo
-      uses: actions/checkout@v2
-
-    - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2
-      with:
-        hugo-version: 'latest'
-        extended: true
-
-    - name: Hugo build
-      run: hugo --minify
-
-    - name: Upload build result
-      # No need to upload if we won't deploy.
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-output
-        path: public
+  #  build:
+  #    name: Build
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #    - name: Checkout repo
+  #      uses: actions/checkout@v2
+  #
+  #    - name: Setup Hugo
+  #      uses: peaceiris/actions-hugo@v2
+  #      with:
+  #        hugo-version: 'latest'
+  #        extended: true
+  #
+  #    - name: Hugo build
+  #      run: hugo --minify
+  #
+  #    - name: Upload build result
+  #      # No need to upload if we won't deploy.
+  #      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+  #      uses: actions/upload-artifact@v2
+  #      with:
+  #        name: build-output
+  #        path: public
 
   deploy-to-object-storage:
     name: Deploy to Object Storage
