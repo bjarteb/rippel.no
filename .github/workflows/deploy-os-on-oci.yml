@@ -42,7 +42,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     env:
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
       OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
       OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
       OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
@@ -59,13 +58,14 @@ jobs:
         name: build-output
         path: public
 
-    - name: Generate HTML
-      run: |
-        echo '<html>hello7</html>' > index.html
-        cat index.html
+          #    - name: Generate HTML
+          #      run: |
+          #        echo '<html>hello7</html>' > index.html
+          #        cat index.html
 
     - name: Upload Static Website
       uses: oracle-actions/run-oci-cli-command@v1.1.1
       with:
-        command: '--debug os object put --namespace ${{ secrets.OCI_CLI_NAMESPACE }} -bn website --file index.html --content-type text/html --force'
+        command: '--debug os object sync -bn website --src-dir public'
+          #command: '--debug os object put --namespace ${{ secrets.OCI_CLI_NAMESPACE }} -bn website --file index.html --content-type text/html --force'
         silent: false
