@@ -61,7 +61,7 @@ jobs:
 
     - name: Generate HTML
       run: |
-        echo '<html>hello6</html>' > index.html
+        echo '<html>hello7</html>' > index.html
         cat index.html
 
     - name: Upload Static Website
